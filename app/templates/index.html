@@ -1,11 +1,17 @@
-<h1>Hello World</h1>
+{% extends 'base.html' %}
+{% import 'macros.html' as macros%}
 
-<div class="container-fluid quotes">
-    <div class="row">
-        <div class="col-md-12">
-            <h4 class="text-center">Quotes</h4>
-            <p class="text-center">"{{quote}}"</p>
-            
+
+<body>
+    {% block content %}
+    <div class="container-fluid quotes">
+        <div class="row">
+            <div class="col-md-12" style="background-color: #DCE1E3;">
+                <h4 class="text-center">Quotes</h4>
+                <p class="text-center">"{{quote}}"</p>
+                
+            </div>
         </div>
     </div>
-</div>
+    {% endblock  %}
+</body>
