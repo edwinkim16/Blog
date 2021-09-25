@@ -3,7 +3,7 @@ from .requests import get_quotes
 from . import main
 from flask_login import login_required,current_user
 from ..models import User, Pitch, Comment
-from .forms import UpdateProfile, PitchForm , CommentForm
+from .forms import UpdateProfile, PitchForm , CommentForm,SubscribeForm
 from .. import db,photos
 
 @main.route('/')
