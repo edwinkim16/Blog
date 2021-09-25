@@ -2,7 +2,7 @@ from flask import render_template,redirect,url_for,request,abort,flash
 from .requests import get_quotes
 from . import main
 from flask_login import login_required,current_user
-from ..models import User, Pitch, Comment
+from ..models import User, Pitch, Comment,Subscriber
 from .forms import UpdateProfile, PitchForm , CommentForm,SubscribeForm
 from .. import db,photos
 
@@ -93,4 +93,18 @@ def new_comment(id):
   
 
 
-    return render_template('new_comment.html', title='New Post', comment=comment,comment_form=form, post ='New Post')     
+    return render_template('new_comment.html', title='New Post', comment=comment,comment_form=form, post ='New Post')    
+
+@main.route('/subscription',methods=['GET','POST'])
+def subscription():
+    subscription_form = SubscribeForm()
+
+    if subscription_form.validate_on_submit():
+        new_subscriber = Subscriber(subscriber_name=subscription_form.subscriber_name.data,subscriber_email=subscription_form.subscriber_email.data)
+
+        db.session.add(new_subscriber)
+        db.session.commit()
+
+        return redirect(url_for('main.index'))    
+
+    return render_template('subscription.html',subscription_form = subscription_form)     
