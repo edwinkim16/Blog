@@ -39,23 +39,23 @@
           
         </ul>
         <ul class="navbar-nav ml-auto nav-flex-icons " style="list-style: none;">
-            
+            {% if current_user.is_authenticated %}
             <li><a href="">Profile</a></li>
             <li style="font-weight: bold;font-style: italic;padding-left:10px;padding-right:10px;">
-                </li>
-            <li><a href="">Log out</a></li>
-            
+                {{current_user.username}}</li>
+            <li><a href="{{url_for('auth.logout')}}">Log out</a></li>
+            {% else %}
             <li class="nav-item">
-                <a class="nav-link waves-effect waves-light" href="">
+                <a class="nav-link waves-effect waves-light" href="{{url_for('auth.register')}}">
                     <i class="fas fa-user">Sign Up</i>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link waves-effect waves-light" href="">
+                <a class="nav-link waves-effect waves-light" href="{{url_for('auth.login')}}">
                     <i class="fas fa-sign-out-alt">Log in</i>
                 </a>
             </li>
-            
+            {% endif %}
         </ul>
     </div>
 </nav>
