@@ -3,14 +3,16 @@ from .requests import get_quotes
 from . import main
 from flask_login import login_required,current_user
 from ..models import User, Pitch, Comment
-from .forms import UpdateProfile, BlogForm , CommentForm
+from .forms import UpdateProfile, PitchForm , CommentForm
 from .. import db,photos
 
 @main.route('/')
 def index():
     quote = get_quotes()
+    title = 'Blogs Site'
+    pitch=Pitch.query.order_by(Pitch.id.desc()).all()
    
-    return render_template('index.html',quote=quote)
+    return render_template('index.html',quote=quote, title= title,pitch=pitch)
 
 @main.route('/user/<uname>')
 def profile(uname):
@@ -54,7 +56,7 @@ def update_pic(uname):
 @main.route('/pitch/new', methods=['GET','POST'])
 @login_required
 def new_pitch():
-    form = BlogForm()
+    form = PitchForm()
 
     if form.validate_on_submit():
 

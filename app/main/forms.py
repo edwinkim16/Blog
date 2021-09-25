@@ -8,11 +8,11 @@ class UpdateProfile(FlaskForm):
 
 
 
-class BlogForm(FlaskForm):
+class PitchForm(FlaskForm):
 
     title = StringField('Blog title')
     category= SelectField('Blog Category', choices=[('Select a category', 'Select a category'),('Sports', 'Sports'),('Travel Blog', 'Travel Blog'),('Fitnes Blog', 'Fitness Blog')])
-    content = TextAreaField('Blog category...')
+    content = TextAreaField('Blog content...')
     submit = SubmitField('Post')
 
 class CommentForm(FlaskForm):
