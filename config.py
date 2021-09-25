@@ -7,6 +7,7 @@ class Config:
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://acces:Access@localhost/blogs'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SECRET_KEY='sd123'
+    UPLOADED_PHOTOS_DEST ='app/static/photos'
     pass
 
 
