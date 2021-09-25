@@ -40,7 +40,7 @@
         </ul>
         <ul class="navbar-nav ml-auto nav-flex-icons " style="list-style: none;">
             {% if current_user.is_authenticated %}
-            <li><a href="">Profile</a></li>
+            <li><a href="{{url_for('main.profile',uname=current_user.username)}}">Profile</a></li>
             <li style="font-weight: bold;font-style: italic;padding-left:10px;padding-right:10px;">
                 {{current_user.username}}</li>
             <li><a href="{{url_for('auth.logout')}}">Log out</a></li>
